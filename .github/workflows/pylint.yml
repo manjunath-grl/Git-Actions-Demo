@@ -20,9 +20,6 @@ jobs:
           pip install pylint
       - name: Analysing the code with pylint
         run: |
-          if [[ $git ls-files '*.py' != "" ]]; then
-                echo "Run pylint on files $(git ls-files '*.py') "
-            else 
-                echo "No py files found"
-            fi
-        #continue-on-error: true
+          if test -f '*.py'; then
+              pylint $(git ls-files '*.py')"
+          fi
