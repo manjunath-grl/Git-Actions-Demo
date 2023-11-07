@@ -20,7 +20,8 @@ jobs:
           pip install pylint
       - name: Analysing the code with pylint
         run: |
-          if [ -f $(git ls-files '*.py') ]; then
+          pythonFileCount=`ls -1 *.py 2>/dev/null | wc -l`
+          if [ $pythonFileCount != 0 ]; then
               pylint $(git ls-files '*.py') --disable=missing-docstring
           else
               echo "No python file exits"
