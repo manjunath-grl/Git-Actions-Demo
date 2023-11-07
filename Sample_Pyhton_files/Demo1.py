@@ -6,4 +6,4 @@ def squ(a):
 
 provided_Num = input("Please enter any integer: ")
 
-print squ(int(provided_Num)))
+print(squ(int(provided_Num)))
