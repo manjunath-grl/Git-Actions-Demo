@@ -20,7 +20,7 @@ jobs:
           pip install pylint
       - name: Analysing the code with pylint
         run: |
-          pythonFileCount=$(find /import/ -maxdepth 1 -type f -name '*.py' | wc -l)
+          pythonFileCount=$(find -maxdepth 1 -type f -name '*.py' | wc -l)
           if [ $pythonFileCount -gt 0 ]; then
               pylint $(git ls-files '*.py') --disable=missing-docstring
           else
