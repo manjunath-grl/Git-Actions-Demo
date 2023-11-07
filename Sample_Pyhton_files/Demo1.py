@@ -4,6 +4,6 @@ print("Hello, User")
 def squ(a):
     return a*a
 
-provided_Num = input("Please enter any integer")
+provided_Num = input("Please enter any integer: ")
 
-print(squ(int(provided_Num)))
+print squ(int(provided_Num)))
