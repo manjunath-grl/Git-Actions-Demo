@@ -27,15 +27,15 @@ jobs:
             echo "$file"
           done
 
-      - name: Get changed files
-        id: changes
-        # Set outputs using the command.
-        run: |
-          echo "all=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)" >> "$GITHUB_ENV"
-          echo "ts=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .ts$ | xargs)" >> "$GITHUB_ENV"
+      # - name: Get changed files
+      #   id: changes
+      #   # Set outputs using the command.
+      #   run: |
+      #     echo "all=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)" >> "$GITHUB_ENV"
+      #     echo "ts=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep .ts$ | xargs)" >> "$GITHUB_ENV"
 
-      - name: Get Changed Files
-        uses: darmiel/changed-files@v1
+      # - name: Get Changed Files
+      #   uses: darmiel/changed-files@v1
 
-      - name: Combine modified and added files
-        run: cat .changed-files.{modified,added}.py | uniq > changed_file_list.txt
+      # - name: Combine modified and added files
+      #   run: cat .changed-files.{modified,added}.py | uniq > changed_file_list.txt
