@@ -3,7 +3,7 @@ import sys
 
 sys.path.append('..')
 
-from sample_Python_files.demo_2 import *
+from sample_Python_files.demo_2 import is_prime
 
 class CheckPrime(unittest.TestCase):
     def test_prime(self):
@@ -12,4 +12,4 @@ class CheckPrime(unittest.TestCase):
 
 
 if __name__ == '__main__':
-      unittest.main()
+    unittest.main()

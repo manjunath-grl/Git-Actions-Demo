@@ -1,6 +1,5 @@
 import unittest
 import sys
-import os
 
 sys.path.append('..')
 
@@ -20,7 +19,7 @@ class TestMathFunctions(unittest.TestCase):
     def test_cube(self):
         self.assertEqual(cube(2), 8)
         self.assertNotEqual(cube(4), 63)
-    
+
     def test_divide(self):
         with self.assertRaises(ZeroDivisionError):
             divide(42, 0)
@@ -28,4 +27,4 @@ class TestMathFunctions(unittest.TestCase):
 
 
 if __name__ == '__main__':
-      unittest.main()
+    unittest.main()
