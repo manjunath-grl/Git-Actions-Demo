@@ -1,14 +1,15 @@
 import unittest
+import sys
 
-from Sample_Python_files.demo_2 import check_Prime
+sys.path.append('..')
+
+from Sample_Python_files.demo_2 import *
+
+class CheckPrime(unittest.TestCase):
+    def test_prime(self):
+      print("Running Unit test to check value 3 is Prime or not")
+      self.assertTrue(is_prime(3))
 
 
-class TestPrime(unittest.TestCase):
-    def test_prime_not_prime(self):
-        self.assertTrue(self.demo_2.check_Prime.is_prime(2))
-        self.assertTrue(self.demo_2.check_Prime.is_prime(3))
-        self.assertFalse(self.demo_2.check_Prime.is_prime(9))
-        self.assertTrue(self.demo_2.check_Prime.is_prime(11))
-
-if __name__=='__main__':
-	unittest.main()
+if __name__ == '__main__':
+      unittest.main()

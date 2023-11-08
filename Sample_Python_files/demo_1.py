@@ -1,17 +1,10 @@
-"""Module providing a function printing python version."""
-import sys
 
+def squ(a):
+    return a*a
 
-def print_python_version():
-    print(sys.version)
+def cube(a):
+    return a*a*a
 
-print("Hello, User")
+def divide(num,den):
+    return num / den
 
-class Calculator:
-    def squ(a):
-        return a*a
-
-provided_Num = input("Please enter any integer: ")
-
-print(Calculator.squ(int(provided_Num)))
-print_python_version()

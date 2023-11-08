@@ -1,21 +1,29 @@
 import unittest
 import sys
 
-print(sys.path)
+sys.path.append('..')
 
-from Sample_Python_files.demo_1 import Calculator
+from Sample_Python_files.demo_1 import *
 
-#sys.path.insert(0, '/home/grl/Desktop/Git-Actions-Demo/Sample_Python_files')
+class TestMathFunctions(unittest.TestCase):
 
-
-class Calculator(unittest.TestCase):
-    def test_to_see_square_root_works_ok(self):
-        result = self.Calculator.squ(4)
+    def test_square(self):
+        result = squ(4)
         self.assertEqual(16, result)
-        result = self.Calculator.squ(0)
+        result = squ(0)
         self.assertEqual(0, result)
-        result = self.Calculator.squ(-4)
+        result = squ(-4)
         self.assertEqual(16, result)
 
-if __name__=='__main__':
-	unittest.main()
+    def test_cube(self):
+      self.assertEqual(cube(2), 8)
+      self.assertNotEqual(cube(4), 63)
+    
+    def test_divide(self):
+       with self.assertRaises(ZeroDivisionError):
+         divide(42, 0)
+       self.assertEqual(divide(1,2), 0.5)
+
+
+if __name__ == '__main__':
+      unittest.main()
