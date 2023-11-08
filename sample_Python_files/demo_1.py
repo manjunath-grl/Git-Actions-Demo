@@ -7,4 +7,3 @@ def cube(a):
 
 def divide(num,den):
     return num / den
-

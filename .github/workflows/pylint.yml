@@ -15,15 +15,17 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pylint
+
       - name: Analysing the code with pylint
         run: |
           pythonFileCount=$(find -type f -name '*.py' | wc -l)
           if [ $pythonFileCount -gt 0 ]; then
-              pylint $(git ls-files '*.py') --disable=missing-docstring
+              pylint $(git ls-files '*.py') --disable=missing-docstring,C0413
           else
               echo "No python file exits"
           fi

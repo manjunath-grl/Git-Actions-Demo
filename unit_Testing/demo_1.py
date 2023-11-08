@@ -1,9 +1,11 @@
 import unittest
 import sys
+import os
 
 sys.path.append('..')
 
-from Sample_Python_files.demo_1 import *
+from sample_Python_files.demo_1 import squ, divide, cube
+
 
 class TestMathFunctions(unittest.TestCase):
 
@@ -16,13 +18,13 @@ class TestMathFunctions(unittest.TestCase):
         self.assertEqual(16, result)
 
     def test_cube(self):
-      self.assertEqual(cube(2), 8)
-      self.assertNotEqual(cube(4), 63)
+        self.assertEqual(cube(2), 8)
+        self.assertNotEqual(cube(4), 63)
     
     def test_divide(self):
-       with self.assertRaises(ZeroDivisionError):
-         divide(42, 0)
-       self.assertEqual(divide(1,2), 0.5)
+        with self.assertRaises(ZeroDivisionError):
+            divide(42, 0)
+        self.assertEqual(divide(1,2), 0.5)
 
 
 if __name__ == '__main__':
