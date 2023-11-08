@@ -20,5 +20,5 @@ jobs:
 
       - name: Run tests
         run: |
-          cd unit_Testing
+          cd unitTesting
           python3 -m unittest demo_1.py demo_2.py -v
