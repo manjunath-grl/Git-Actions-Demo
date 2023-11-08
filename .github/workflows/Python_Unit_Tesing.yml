@@ -27,6 +27,4 @@ jobs:
 
       - name: Run tests
         run: |
-          git diff ORIG_HEAD HEAD
-          git diff-tree --no-commit-id --name-only -r <sha1-commit-hash>
           pytest Unit_Testing/demo_1.py
