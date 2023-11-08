@@ -3,7 +3,7 @@ import sys
 
 sys.path.append('..')
 
-from sample_Python_files.demo_2 import is_prime
+from samplePythonfiles.demo_2 import is_prime
 
 class CheckPrime(unittest.TestCase):
     def test_prime(self):

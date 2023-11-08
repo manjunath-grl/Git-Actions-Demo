@@ -3,7 +3,7 @@ import sys
 
 sys.path.append('..')
 
-from sample_Python_files.demo_1 import squ, divide, cube
+from samplePythonfiles.demo_1 import squ, divide, cube
 
 
 class TestMathFunctions(unittest.TestCase):
