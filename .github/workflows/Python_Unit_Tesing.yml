@@ -1,0 +1,32 @@
+name: Python unit testing
+
+on: [push]
+
+jobs:
+  unit-testing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+
+      - id: cache-pipenv
+        uses: actions/cache@v1
+        with:
+          path: ~/.local/share/virtualenvs
+          key: ${{ runner.os }}-pipenv-${{ hashFiles('**/Pipfile.lock') }}
+
+      - name: Install dependencies
+        if: steps.cache-pipenv.outputs.cache-hit != 'true'
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: Run tests
+        run: |
+          git diff ORIG_HEAD HEAD
+          git diff-tree --no-commit-id --name-only -r <sha1-commit-hash>
+          pytest Unit_Testing/demo_1.py
