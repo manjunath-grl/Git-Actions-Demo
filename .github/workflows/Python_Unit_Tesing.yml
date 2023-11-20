@@ -15,9 +15,7 @@ jobs:
 
       - name: List all the files changed in current PR
         run: |
-          my_var="Hello World"
-          echo "Output [$my_var]"
-          git--no-pager diff --name-only --diff-filter=ACMRT ${{github.event.pull_request.base.sha}} ${{ github.event.pull_request.head.sha }} >> $GITHUB_OUTPUT
+          git --no-pager diff --name-only --diff-filter=ACMRT ${{github.event.pull_request.base.sha}} ${{ github.event.pull_request.head.sha }} >> $GITHUB_OUTPUT
 
       - name: Install dependencies
         run: |
