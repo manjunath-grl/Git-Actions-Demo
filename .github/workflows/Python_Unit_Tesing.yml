@@ -38,8 +38,8 @@ jobs:
           do
             for value in "${!filesChanged[@]}";
             do
-              echo "${filesChanged[$value]} value"
-              echo "${tests_list[$key]} key"
+              echo "${filesChanged[$value]} $value"
+              echo "${tests_list[$key]} $key"
               if [[ ${filesChanged[$value]} == ${tests_list[$key]} ]];
               then
                 echo "inside if"
