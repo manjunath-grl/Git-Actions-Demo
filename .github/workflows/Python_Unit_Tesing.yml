@@ -37,12 +37,10 @@ jobs:
           #Looping through the array and running the tests if match found.
           for key in "${!tests_list[@]}";
           do
-            echo "tests_list: "${tests_list[$key]} "and index:" $key
+            list_value=${tests_list[$key]}
             for value in "${!filesChanged[@]}";
             do
-              echo "filesChanged: "${filesChanged[$value]} "and index:" $value
-
-              if [[ ${filesChanged[$value]} == ${tests_list[$key]} ]];
+              if [[ ${filesChanged[$value]} =~ $list_value ]];
               then
                 test=${tests_list[$key]}
                 test_name="${test#*$text}"
