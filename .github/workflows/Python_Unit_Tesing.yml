@@ -24,7 +24,8 @@ jobs:
         run: |
           declare -a filesChanged
           filesChanged=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
-          echo "${filesChanged[@]}"
+
+          # echo "${filesChanged[@]}"
 
           check_file=" samplePythonfiles/demo_1.py "
           echo $check_file
