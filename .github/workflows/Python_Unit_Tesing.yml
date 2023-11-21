@@ -35,13 +35,17 @@ jobs:
           #Looping through the array and running the tests if match found.
           for key in "${!tests_list[@]}";
           do
-            echo "${tests_list[$key]}"
             for value in "${!filesChanged[@]}";
             do
-              echo "${filesChanged[$value]}"
               if [[ ${filesChanged[$value]} == ${tests_list[$key]} ]];
               then
-                python3 -m unittest "${tests_list[key]} | cut -d'/' -f2" -v
+                #test_name="${tests_list[$key]} | cut -d'/' -f2" Not working
+
+                text="samplePythonfiles/"
+                test=${tests_list[$key]}
+                test_name="${test#*$text}"
+                #Runs unit tests
+                python3 -m unittest $test_name -v
                 break
               fi
             done
