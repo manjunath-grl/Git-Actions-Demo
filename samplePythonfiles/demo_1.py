@@ -5,5 +5,8 @@ def squ(a):
 def cube(a):
     return a*a*a
 
+def addNum(a,b):
+    return a+b
+
 def divide(num,den):
     return num / den
