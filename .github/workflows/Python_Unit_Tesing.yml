@@ -36,12 +36,13 @@ jobs:
           #Looping through the array and running the tests if match found.
           for key in "${!tests_list[@]}";
           do
+            echo "inside tests_list"
             for value in "${!filesChanged[@]}";
             do
+              echo "inside filesChanged"
               if [[ ${filesChanged[$value]} == ${tests_list[$key]} ]];
               then
-                #test_name="${tests_list[$key]} | cut -d'/' -f2" Not working
-
+                echo "inside if"
                 test=${tests_list[$key]}
                 test_name="${test#*$text}"
                 echo ${test_name}
@@ -51,3 +52,5 @@ jobs:
               fi
             done
           done
+
+#test_name="${tests_list[$key]} | cut -d'/' -f2" Not working
