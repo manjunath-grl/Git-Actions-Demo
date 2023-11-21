@@ -19,7 +19,6 @@ jobs:
         run: |
           declare -a filesChanged
           filesChanged=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
-          echo "${filesChanged[@]}"
 
       - name: Install dependencies
         run: |
@@ -28,5 +27,11 @@ jobs:
 
       - name: Run tests
         run: |
-          cd unitTesting
-          python3 -m unittest demo_1.py demo_2.py -v
+          echo "${filesChanged[@]}"
+          item="demo_1.py"
+          if item in ${filesChanged[@]}; then
+          do
+            cd unitTesting
+            python3 -m unittest demo_1.py demo_2.py -v
+          else
+            echo "No Unit tests to run"

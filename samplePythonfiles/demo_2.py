@@ -4,3 +4,6 @@ def is_prime(num):
         if (num % i) == 0:
             return False
         return True
+
+def addNumbers(a,b):
+    return a+b
