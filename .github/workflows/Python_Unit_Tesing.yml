@@ -23,6 +23,7 @@ jobs:
       - name: Run Unit tests
         run: |
           cd unitTesting
+
           text="samplePythonfiles/"
 
           # Saves the PR's modified files name
@@ -40,17 +41,18 @@ jobs:
             for value in "${!filesChanged[@]}";
             do
               echo "filesChanged: "${filesChanged[$value]} "and index:" $value
-              
+
               if [[ ${filesChanged[$value]} == ${tests_list[$key]} ]];
               then
-                echo "inside if"
                 test=${tests_list[$key]}
                 test_name="${test#*$text}"
-                echo ${test_name}
+                echo "Running unit test : ${test_name}
 
                 #Runs unit tests
                 python3 -m unittest ${test_name} -v
                 break
+              else
+                echo "No match found"
               fi
             done
           done
