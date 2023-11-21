@@ -30,9 +30,8 @@ jobs:
           check_file=" samplePythonfiles/demo_1.py "
           echo $check_file
 
-          unit_test=awk 'substr($check_file, 19)'
+          unit_test=awk '{ sub(/.*//, ""); print }' <<< "$check_file"
 
-          #unit_test=$check_file | cut -c-19
           echo $unit_test
 
           # if $check_file in ${filesChanged[@]};
