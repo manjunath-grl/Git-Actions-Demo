@@ -35,3 +35,4 @@ jobs:
             python3 -m unittest $item -v
           else
             echo "No Unit tests to run"
+          fi
