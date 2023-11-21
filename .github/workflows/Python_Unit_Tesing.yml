@@ -1,6 +1,6 @@
 name: Python unit testing
 
-on: [push]
+on: [pull_request]
 
 jobs:
   unit-testing:
@@ -9,9 +9,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
 
       - name: Setup Python
         uses: actions/setup-python@v2
+
+      - name: List all the files changed in current PR
+        run: |
+          declare -a filesChanged
+          filesChanged=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
+          echo "${filesChanged[@]}"
 
       - name: Install dependencies
         run: |

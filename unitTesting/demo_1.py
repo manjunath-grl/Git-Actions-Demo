@@ -15,6 +15,8 @@ class TestMathFunctions(unittest.TestCase):
         self.assertEqual(0, result)
         result = squ(-4)
         self.assertEqual(16, result)
+        result = squ(10)
+        self.assertEqual(100, result)
 
     def test_cube(self):
         self.assertEqual(cube(2), 8)
