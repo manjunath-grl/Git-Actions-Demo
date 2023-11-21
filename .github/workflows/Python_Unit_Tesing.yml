@@ -24,21 +24,19 @@ jobs:
         run: |
           declare -a filesChanged
           filesChanged=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
-
           # echo "${filesChanged[@]}"
 
-          check_file=" samplePythonfiles/demo_1.py "
-          echo $check_file
+          tests_list= ("samplePythonfiles/demo_1.py", "samplePythonfiles/demo_1.py")
+          echo $tests_list
 
-          unit_test=$check_file | cut -d'/' -f2
-
-          echo $unit_test
-
-          # if $check_file in ${filesChanged[@]};
-          if [[ $filesChanged[@] == *"$check_file"* ]];
-          then
-            cd unitTesting
-            python3 -m unittest $unit_test -v
-          else
-            echo "No Unit tests to run"
-          fi
+          for key in "${!tests_list[@]}";
+          do
+            echo $tests_list[$key]
+            if [[ $filesChanged[@] == "$tests_list[$key]" ]];
+            then
+              cd unitTesting
+              python3 -m unittest ($tests_list[1] | cut -d'/' -f2) -v
+            else
+              echo "No Unit tests to run"
+            fi
+          done
