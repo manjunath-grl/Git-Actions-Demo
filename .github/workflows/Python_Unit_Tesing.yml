@@ -1,6 +1,6 @@
 name: Python unit testing
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   unit-testing:
@@ -18,7 +18,7 @@ jobs:
       - name: List all the files changed in current PR
         run: |
           declare -a filesChanged
-          git diff --name-only --diff-filter=ACMRT ${{ github.event.workflow_run.head_sha }} ${{ github.event.pull_request.head.sha }}
+          git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }}
           filesChanged=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.workflow_run.head_sha }} ${{ github.event.pull_request.head.sha }})
           echo "${filesChanged[@]}"
 
