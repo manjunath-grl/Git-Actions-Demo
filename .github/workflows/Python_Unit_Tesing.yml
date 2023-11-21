@@ -29,8 +29,8 @@ jobs:
         run: |
           echo "${filesChanged[@]}"
           item="demo_1.py"
-          if $item in ${filesChanged[@]}; then
-          do
+          if $item in ${filesChanged[@]}; 
+          then
             cd unitTesting
             python3 -m unittest $item -v
           else
