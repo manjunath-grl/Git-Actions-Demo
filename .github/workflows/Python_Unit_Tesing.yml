@@ -23,6 +23,7 @@ jobs:
       - name: Run Unit tests
         run: |
           cd unitTesting
+          text="samplePythonfiles/"
 
           # Saves the PR's modified files name
           declare -a filesChanged
@@ -41,11 +42,11 @@ jobs:
               then
                 #test_name="${tests_list[$key]} | cut -d'/' -f2" Not working
 
-                text="samplePythonfiles/"
                 test=${tests_list[$key]}
                 test_name="${test#*$text}"
+                echo ${test_name}
                 #Runs unit tests
-                python3 -m unittest $test_name -v
+                python3 -m unittest ${test_name} -v
                 break
               fi
             done
