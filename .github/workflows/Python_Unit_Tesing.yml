@@ -26,11 +26,13 @@ jobs:
           filesChanged=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
           echo "${filesChanged[@]}"
 
-          item="samplePythonfiles/demo_1.py"
-          unit_test= $item | cut -c-19
+          check_file=" samplePythonfiles/demo_1.py "
+          echo $check_file
+
+          unit_test=$check_file | cut -c-19
 
           echo "$unit_test"
-          if $item in ${filesChanged[@]};
+          if $check_file in ${filesChanged[@]};
           then
             cd unitTesting
             python3 -m unittest $unit_test -v
