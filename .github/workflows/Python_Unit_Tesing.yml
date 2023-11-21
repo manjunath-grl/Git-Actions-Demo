@@ -30,6 +30,9 @@ jobs:
           check_file=" samplePythonfiles/demo_1.py "
           echo $check_file
 
+          STR="Hello!! My name is ROMY kumari"
+          awk '{ sub(/.*!!/, ""); sub(/kumari.*/, ""); print }' <<< "$STR"
+
           unit_test=awk '{ sub(/.*//, ""); print }' <<< "$check_file"
 
           echo $unit_test
