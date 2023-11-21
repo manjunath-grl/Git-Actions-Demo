@@ -29,9 +29,9 @@ jobs:
         run: |
           echo "${filesChanged[@]}"
           item="demo_1.py"
-          if item in ${filesChanged[@]}; then
+          if $item in ${filesChanged[@]}; then
           do
             cd unitTesting
-            python3 -m unittest demo_1.py demo_2.py -v
+            python3 -m unittest $item -v
           else
             echo "No Unit tests to run"
