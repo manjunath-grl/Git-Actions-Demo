@@ -15,24 +15,25 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
 
-      - name: List all the files changed in current PR
-        run: |
-          declare -a filesChanged
-          filesChanged=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pytest
 
-      - name: Run tests
+      - name: Run Unit tests
         run: |
+          declare -a filesChanged
+          filesChanged=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
           echo "${filesChanged[@]}"
-          item="demo_1.py"
-          if $item in ${filesChanged[@]}; 
+
+          item="samplePythonfiles/demo_1.py"
+          unit_test= $item | cut -c-19
+
+          echo "$unit_test"
+          if $item in ${filesChanged[@]};
           then
             cd unitTesting
-            python3 -m unittest $item -v
+            python3 -m unittest $unit_test -v
           else
             echo "No Unit tests to run"
           fi
