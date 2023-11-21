@@ -46,7 +46,7 @@ jobs:
               then
                 test=${tests_list[$key]}
                 test_name="${test#*$text}"
-                echo "Running unit test : ${test_name}
+                echo "Running unit test : ${test_name}"
 
                 #Runs unit tests
                 python3 -m unittest ${test_name} -v
