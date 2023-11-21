@@ -36,16 +36,18 @@ jobs:
           #Looping through the array and running the tests if match found.
           for key in "${!tests_list[@]}";
           do
+            echo "tests_list: "${tests_list[$key]} "and index:" $key
             for value in "${!filesChanged[@]}";
             do
-              echo "${filesChanged[$value]} $value"
-              echo "${tests_list[$key]} $key"
+              echo "filesChanged: "${filesChanged[$value]} "and index:" $value
+              
               if [[ ${filesChanged[$value]} == ${tests_list[$key]} ]];
               then
                 echo "inside if"
                 test=${tests_list[$key]}
                 test_name="${test#*$text}"
                 echo ${test_name}
+
                 #Runs unit tests
                 python3 -m unittest ${test_name} -v
                 break
