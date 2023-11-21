@@ -30,9 +30,9 @@ jobs:
           check_file=" samplePythonfiles/demo_1.py "
           echo $check_file
 
-          unit_test=$check_file | cut -d'/' -f1
+          unit_test=$check_file | cut -d'/' -f2
 
-          echo $unit_test[1]
+          echo $unit_test
 
           # if $check_file in ${filesChanged[@]};
           if [[ $filesChanged[@] == *"$check_file"* ]];
