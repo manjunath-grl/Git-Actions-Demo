@@ -16,7 +16,7 @@ jobs:
       - name: List all the files changed in current PR
         run: |
           declare -a filesChanged
-          filesChanged=$(git diff --name-only --diff-filter=ACMRT ${{github.event.pull_request.base.sha}} ${{ github.event.pull_request.head.sha }})
+          filesChanged=$(git diff --name-only --diff-filter=ACMRT ${{github.event.pull_request.base.sha}} ${{github.sha}})
           echo ${filesChanged[@]}
 
       - name: Install dependencies
