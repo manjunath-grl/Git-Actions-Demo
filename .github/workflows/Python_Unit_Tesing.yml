@@ -36,10 +36,10 @@ jobs:
           #Looping through the array and running the tests if match found.
           for key in "${!tests_list[@]}";
           do
-            echo "inside tests_list"
             for value in "${!filesChanged[@]}";
             do
-              echo "inside filesChanged"
+              echo "${filesChanged[$value]} value"
+              echo "${tests_list[$key]} key"
               if [[ ${filesChanged[$value]} == ${tests_list[$key]} ]];
               then
                 echo "inside if"
