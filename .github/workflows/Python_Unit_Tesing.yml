@@ -15,18 +15,44 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
 
-      - name: List all the files changed in current PR
-        run: |
-          declare -a filesChanged
-          filesChanged=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
-          echo "${filesChanged[@]}"
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pytest
 
-      - name: Run tests
+      - name: Run Unit tests
         run: |
           cd unitTesting
-          python3 -m unittest demo_1.py demo_2.py -v
+
+          text="samplePythonfiles/"
+
+          # Saves the PR's modified files name
+          declare -a filesChanged
+          filesChanged=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }})
+
+          # Need to send the list of all unit tests names in tests_list array
+          declare -a tests_list
+          tests_list=("samplePythonfiles/demo_1.py" "samplePythonfiles/demo_2.py")
+
+          #Looping through the array and running the tests if match found.
+          for key in "${!tests_list[@]}";
+          do
+            list_value=${tests_list[$key]}
+            for value in "${!filesChanged[@]}";
+            do
+              if [[ ${filesChanged[$value]} =~ $list_value ]];
+              then
+                test=${tests_list[$key]}
+                test_name="${test#*$text}"
+                echo "Running unit test : ${test_name}"
+
+                #Runs unit tests
+                python3 -m unittest ${test_name} -v
+                break
+              else
+                echo "No match found"
+              fi
+            done
+          done
+
+#test_name="${tests_list[$key]} | cut -d'/' -f2" Not working
