@@ -24,7 +24,7 @@ jobs:
         run: |
           cd unitTesting
 
-          text="samplePythonfiles/"
+          #text="samplePythonfiles/"
 
           # Saves the PR's modified files name
           declare -a filesChanged
@@ -32,27 +32,32 @@ jobs:
 
           # Need to send the list of all unit tests names in tests_list array
           declare -a tests_list
-          tests_list=("samplePythonfiles/demo_1.py" "samplePythonfiles/demo_2.py")
+          tests_list=($(ls -F --file-type *.py))
 
           #Looping through the array and running the tests if match found.
           for key in "${!tests_list[@]}";
           do
-            list_value=${tests_list[$key]}
-            for value in "${!filesChanged[@]}";
-            do
-              if [[ ${filesChanged[$value]} =~ $list_value ]];
+            echo "tests_list: "${tests_list[$key]} "and index:" $key
+            #list_value=${tests_list[$key]}
+            #for value in "${!filesChanged[@]}";
+            #do
+              #if [[ ${filesChanged[$value]} =~ $list_value ]];
+              if echo "${filesChanged[@]}" | grep -qw "${tests_list[$key]}";
               then
+                #test=${tests_list[$key]}
+                #test_name="${test#*$text}"
                 test=${tests_list[$key]}
-                test_name="${test#*$text}"
-                echo "Running unit test : ${test_name}"
+                #echo "Running unit test : ${test_name}"
+                echo "Running unit test : ${test}"
 
                 #Runs unit tests
-                python3 -m unittest ${test_name} -v
-                break
+                #python3 -m unittest ${test_name} -v
+                python3 -m unittest ${test} -v
+                #break
               else
                 echo "No match found"
               fi
-            done
+            #done
           done
 
 #test_name="${tests_list[$key]} | cut -d'/' -f2" Not working
