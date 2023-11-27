@@ -55,7 +55,7 @@ jobs:
                 python3 -m unittest ${test} -v
                 #break
               else
-                echo "No match found"
+                echo "${tests_list[$key]} not modified in current PR"
               fi
             #done
           done
