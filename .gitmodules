@@ -1,0 +1,6 @@
+[submodule "Python_Sub_module"]
+	path = Python_Sub_module
+	url = https://github.com/manjunath-grl/Python_Sub_module
+[submodule "C#"]
+	path = "C#"
+	url = https://github.com/manjunath-grl/C-_Sub_Modules.git
