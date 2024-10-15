@@ -3,6 +3,7 @@ def squ(a):
     return a*a
 
 def cube(a):
+    print("HELLO")
     return a*a*a
 
 def addNum(a,b):
