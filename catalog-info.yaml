@@ -5,6 +5,7 @@ metadata:
   description: GitHub Actions demo repository
   annotations:
     github.com/project-slug: manjunath-grl/Git-Actions-Demo
+    backstage.io/techdocs-ref: value
 spec:
   type: service
   lifecycle: development
