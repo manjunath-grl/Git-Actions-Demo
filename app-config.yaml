@@ -1,0 +1,4 @@
+catalog:
+  locations:
+    - type: file
+      target: ./users.yaml
