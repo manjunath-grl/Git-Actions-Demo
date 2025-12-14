@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: git-actions-demo-docs
+  description: Documentation for GitHub Actions Demo repository.
+spec:
+  owner: user:manjunath
+  type: docs

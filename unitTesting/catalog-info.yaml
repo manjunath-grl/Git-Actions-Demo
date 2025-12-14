@@ -1,12 +1,11 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: git-actions-demo
-  description: A demo repository showing GitHub Actions workflows with Python samples and unit testing.
+  name: unit-testing-samples
+  description: Unit test examples integrated with GitHub Actions workflows.
   annotations:
     github.com/project-slug: manjunath-grl/Git-Actions-Demo
-    backstage.io/techdocs-ref: dir:docs
 spec:
-  type: service
+  type: library
   lifecycle: experimental
   owner: user:manjunath
