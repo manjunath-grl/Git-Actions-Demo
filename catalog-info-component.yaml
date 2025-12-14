@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: git-actions-demo-location
+spec:
+  targets:
+    - ./catalog-info-component.yaml
+    - ./samplePythonfiles/catalog-info.yaml
+    - ./unitTesting/catalog-info.yaml
+    - ./docs/catalog-info.yaml
