@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: git-actions-demo
+  description: GitHub Actions demo repository
+  annotations:
+    github.com/project-slug: manjunath-grl/Git-Actions-Demo
+spec:
+  type: service
+  lifecycle: development
+  owner: user:manjunath
