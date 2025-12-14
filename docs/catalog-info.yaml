@@ -1,8 +1,11 @@
 apiVersion: backstage.io/v1alpha1
-kind: Resource
+kind: Component
 metadata:
   name: git-actions-demo-docs
-  description: Documentation for GitHub Actions Demo repository.
+  description: Documentation for Git Actions Demo
+  annotations:
+    backstage.io/techdocs-ref: dir:.
 spec:
+  type: documentation
+  lifecycle: experimental
   owner: user:manjunath
-  type: docs
