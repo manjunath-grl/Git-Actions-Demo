@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: manjunath
+spec:
+  profile:
+    displayName: Manjunath R A
+    email: manjunath@example.com
+  memberOf: []
