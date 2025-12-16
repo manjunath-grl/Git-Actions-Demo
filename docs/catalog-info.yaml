@@ -4,7 +4,7 @@ metadata:
   name: git-actions-demo-docs
   description: Documentation for Git Actions Demo
   annotations:
-    backstage.io/techdocs-ref: dir:.
+    backstage.io/techdocs-ref: dir:docs
 spec:
   type: documentation
   lifecycle: experimental
