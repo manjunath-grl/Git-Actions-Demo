@@ -1,0 +1,7 @@
+docker stop postgres
+
+docker pull postgres:17.0-bookworm
+
+docker rm postgres
+
+docker run -d --name postgres --restart=always -p 5432:5432 -e POSTGRES_PASSWORD=backstage postgres:17.0-bookworm
